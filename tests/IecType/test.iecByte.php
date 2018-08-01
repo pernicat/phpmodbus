@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 // Received bytes interpreting Mixed values
 $data = Array (
@@ -28,6 +28,4 @@ $data = Array (
 
 // Print mixed values
 foreach($data as $d)
-  echo ord(IecType::iecBYTE($d)) . "<br>";
- 
-?>
+  echo ord(Phpmodbus\IecType::iecBYTE($d)) . "<br>";

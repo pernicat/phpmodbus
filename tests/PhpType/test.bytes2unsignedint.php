@@ -1,6 +1,8 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Phpmodbus\PhpType;
 
 // Received bytes interpreting DINT values
 $data = array(
@@ -33,4 +35,3 @@ foreach($dword as $value) {
   var_dump(PhpType::bytes2unsignedInt($value));
   echo "<br>";
 }
-?> 

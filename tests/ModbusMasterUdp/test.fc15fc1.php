@@ -1,9 +1,11 @@
 <?php
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
-require_once dirname(__FILE__) . '/../config.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../config.php';
 
 // Create Modbus object
-$modbus = new ModbusMasterUdp($test_host_ip);
+$modbus = new Phpmodbus\ModbusMasterUdp($test_host_ip);
+
+
 
 // Data to be writen - BOOL array
 $data = array(1, 0, TRUE, TRUE, 0, 1, TRUE, TRUE, 

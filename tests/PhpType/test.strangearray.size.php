@@ -3,7 +3,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Phpmodbus\PhpType;
 
 // Received bytes interpreting Mixed values
 $data = Array (
@@ -41,4 +43,3 @@ try {
 } catch(Exception $e) {
   echo "Exception 'Data are not in array 2 or 4 bytes'". "<br>";
 }
-?>

@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 // http://en.wikipedia.org/wiki/Single_precision
 $data = Array (
@@ -33,18 +33,16 @@ echo "Endianing off <hr>\n";
 // Print mixed values
 for($i=0;$i<count($data);$i++) {
   echo $data[$i] . " --> ";
-  $v = IecType::iecREAL($data[$i], 0);
+  $v = Phpmodbus\IecType::iecREAL($data[$i], 0);
   echo printPacket($v);
-  "<br>\n";
+  echo "<br>\n";
 }
 
 echo "Endianing on <hr>\n";
 // Print mixed values
 for($i=0;$i<count($data);$i++) {
   echo $data[$i] . " --> ";
-  $v = IecType::iecREAL($data[$i], 1);
+  $v = Phpmodbus\IecType::iecREAL($data[$i], 1);
   echo printPacket($v);
-  "<br>\n";
+  echo "<br>\n";
 }
- 
-?>

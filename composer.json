@@ -1,0 +1,24 @@
+{
+    "name": "pernicat/phpmodbus",
+    "type": "library",
+    "license": "Phpmodbus",
+    "authors": [
+        {
+            "name": "Jan Krakora",
+            "email": "krakora.jan@gmail.com"
+        },
+        {
+            "name": "Tony Pernicano",
+            "email": "pernicat@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "ext-sockets": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpmodbus\\": "Phpmodbus/"
+        }
+    }
+}

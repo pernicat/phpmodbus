@@ -1,6 +1,8 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Phpmodbus\PhpType;
 
 // Received bytes interpreting Mixed values
 $data = Array (
@@ -34,4 +36,3 @@ echo PhpType::bytes2signedInt(array_slice($data, 12, 4)) . "<br>";
 echo PhpType::bytes2signedInt(array_slice($data, 16, 2)) . "<br>";
 echo PhpType::bytes2signedInt(array_slice($data, 18, 2)) . "<br>";
  
-?>

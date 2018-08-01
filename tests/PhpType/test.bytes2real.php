@@ -1,6 +1,8 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use Phpmodbus\PhpType;
 
 // Received bytes interpreting 3 REAL values (6 words)
 $data = array( // 1000
@@ -24,4 +26,3 @@ $dword = array_chunk($data, 4);
 echo PhpType::bytes2float($dword[0]) . "<br>";
 echo PhpType::bytes2float($dword[1]) . "<br>";
 echo PhpType::bytes2float($dword[2]) . "<br>";
-?>

@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../Phpmodbus/ModbusMasterUdp.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 // Received bytes interpreting Mixed values
 $data = Array (
@@ -33,18 +33,16 @@ echo "Endianing off <hr>";
 // Print mixed values
 for($i=0;$i<count($data);$i++) {
   echo $data[$i] . " --> ";
-  $v = IecType::iecDINT($data[$i], 0);
+  $v = Phpmodbus\IecType::iecDINT($data[$i], 0);
   echo printPacket($v);
-  "<br>";
+  echo "<br>";
 }
 
 echo "Endianing on <hr>";
 // Print mixed values
 for($i=0;$i<count($data);$i++) {
   echo $data[$i] . " --> ";
-  $v = IecType::iecDINT($data[$i], 1);
+  $v = Phpmodbus\IecType::iecDINT($data[$i], 1);
   echo printPacket($v);
-  "<br>";
+  echo "<br>";
 }
- 
-?>

@@ -14,6 +14,10 @@
  *
  */
 
+namespace Phpmodbus;
+
+use Exception;
+
 /**
  * PhpType
  *
@@ -34,13 +38,11 @@ class PhpType {
      * depends on order of the input bytes (endianning).
      *
      * @param array $values
-     * @param bool $endianness
+     * @param int|bool $endianness
      * @return float
+     * @throws Exception
      */
     public static function bytes2float($values, $endianness = 0) {
-        $data = array();
-        $real = 0;
-
         // Set the array to correct form
         $data = self::checkData($values);
         // Combine bytes
@@ -56,12 +58,11 @@ class PhpType {
      * The return value depends on order of the input bytes (endianning).
      *
      * @param array $values
-     * @param bool $endianness
+     * @param int|bool $endianness
      * @return int
+     * @throws Exception
      */
     public static function bytes2signedInt($values, $endianness = 0) {
-        $data = array();
-        $int = 0;
         // Set the array to correct form
         $data = self::checkData($values);
         // Combine bytes
@@ -81,12 +82,11 @@ class PhpType {
      * The return value depends on order of the input bytes (endianning).
      *
      * @param array $values
-     * @param bool $endianness
+     * @param int|bool $endianness
      * @return int|float
+     * @throws Exception
      */
     public static function bytes2unsignedInt($values, $endianness = 0) {
-        $data = array();
-        $int = 0;
         // Set the array to correct form
         $data = self::checkData($values);
         // Combine bytes
@@ -102,7 +102,7 @@ class PhpType {
      * the end of the string by 0x00 character as defined by string standards.
      *
      * @param array $values
-     * @param bool $endianness
+     * @param int|bool $endianness
      * @return string
      */
     public static function bytes2string($values, $endianness = 0) {
@@ -144,7 +144,7 @@ class PhpType {
      * [{@link http://de.php.net/manual/en/function.base-convert.php PHP base_convert function commentary}, Todd Stokes @ Georgia Tech 21-Nov-2007] or
      * [{@link http://www.php.net/manual/en/function.pack.php PHP pack/unpack functionality}]
      *
-     * @param value value in IEC REAL data type to be converted
+     * @param int $value value in IEC REAL data type to be converted
      * @return float float value
      */
     private static function real2float($value) {
@@ -193,8 +193,9 @@ class PhpType {
      *
      * Check if the data variable is array, and check if the values are numeric
      *
-     * @param int $data
+     * @param int|array $data
      * @return int
+     * @throws Exception
      */
     private static function checkData($data) {
         // Check the data
@@ -230,7 +231,6 @@ class PhpType {
      * @return int
      */
     private static function combineBytes($data, $endianness) {
-        $value = 0;
         // Combine bytes
         if ($endianness == 0)
             $value = (($data[3] & 0xFF)<<16) |
@@ -246,4 +246,3 @@ class PhpType {
         return $value;
     }
 }
-?>
